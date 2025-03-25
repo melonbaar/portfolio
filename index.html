@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kylie Woods</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            background-color: whitesmoke;
+            color: red;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: transparent;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+        }
+
+        h1 {
+            color: whitesmoke;
+            margin: 0;
+        }
+
+        /* Scrolling Image Container */
+        .image-container {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            /* Hides vertical scrollbar */
+            scroll-behavior: smooth;
+            width: 100%;
+            height: 100vh;
+            /* Full height minus header */
+            position: relative;
+            white-space: nowrap;
+            /* Keeps images in a single row */
+            scrollbar-width: none;
+            /* Hides scrollbar for Firefox */
+        }
+
+        .image-container::-webkit-scrollbar {
+            display: none;
+            /* Hides scrollbar for Chrome/Safari */
+        }
+
+        .image-container img {
+            width: 100vw;
+            /* Make images full width */
+            height: 100vh;
+            /* Full viewport height */
+            object-fit: cover;
+            /* Ensures full coverage */
+            display: block;
+            /* Removes any inline spacing */
+            margin: 0;
+            padding: 0;
+
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0px;
+            /* Below header */
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background: whitesmoke;
+            z-index: 2;
+            transition: width 0.1s ease-out;
+        }
+
+        /* About Me Button */
+        .aboutme {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 20;
+    
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: red;
+            color: whitesmoke;
+            padding: 20px;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>kyliewwwoods</h1>
+    </header>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Image Scrolling Container -->
+    <div class="image-container" id="imageContainer">
+        <img src="portfolioimages/vroooma.gif" alt="Image 3">
+        <img src="portfolioimages/carrotgif3.gif" alt="Image 1">
+        <img src="portfolioimages/finalkytfront.png" alt="Image 6">
+        <img src="portfolioimages/idrove1.gif" alt="Image 2">
+        <img src="portfolioimages/PP.gif" alt="Image 7">
+        <img src="portfolioimages/eposter25doc.png" alt="Image 8">
+        <img src="portfolioimages/whiteworkshop.gif" alt="Image 4">
+        <img src="portfolioimages/125schoolofpharmacy copy.png" alt="Image 9">
+  
+
+    </div>
+
+    <!-- About Me Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <h2>About Me</h2>
+        <p>hi, my name is kylie and this is a work in progress.</p>
+    </div>
+
+    <!-- About Me Button -->
+    <div class="aboutme">
+        <button onclick="toggleSidebar()">about me</button>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("open");
+        }
+
+        // Scroll Progress Bar
+        let imageContainer = document.getElementById("imageContainer");
+        let progressBar = document.getElementById("progressBar");
+
+        imageContainer.addEventListener("scroll", function () {
+            let scrollLeft = imageContainer.scrollLeft;
+            let scrollWidth = imageContainer.scrollWidth - imageContainer.clientWidth;
+            let scrollPercentage = (scrollLeft / scrollWidth) * 100;
+            progressBar.style.width = scrollPercentage + "%";
+        });
+    </script>
+</body>
+
+</html>

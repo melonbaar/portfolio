@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Helvetica, sans-serif;
-            background-color: whitesmoke;
+            background-color: black;
             color: red;
             height: 100vh;
             margin: 0;
@@ -35,42 +35,43 @@
             display: flex;
             overflow-x: auto;
             overflow-y: hidden;
-            /* Hides vertical scrollbar */
             scroll-behavior: smooth;
             width: 100%;
             height: 100vh;
-            /* Full height minus header */
             position: relative;
             white-space: nowrap;
-            /* Keeps images in a single row */
             scrollbar-width: none;
-            /* Hides scrollbar for Firefox */
+            background-color: black;
         }
 
         .image-container::-webkit-scrollbar {
             display: none;
-            /* Hides scrollbar for Chrome/Safari */
         }
 
         .image-container img {
             width: 100vw;
-            /* Make images full width */
             height: 100vh;
-            /* Full viewport height */
             object-fit: cover;
-            /* Ensures full coverage */
             display: block;
-            /* Removes any inline spacing */
             margin: 0;
             padding: 0;
+        }
 
+        /* Special Images (1, 5, and 7) */
+        .image-container img.special {
+            width: 80vw;
+            height: 50vw;
+            object-fit: contain;
+            display: block;
+            margin: auto 10vw; /* Adds left and right margins */
+            padding: 30px;
+            min-height: 300px; /* Prevents collapse */
         }
 
         /* Scroll Progress Bar */
         .progress-bar {
             position: fixed;
             top: 0px;
-            /* Below header */
             left: 0;
             width: 0%;
             height: 5px;
@@ -85,7 +86,6 @@
             bottom: 20px;
             left: 20px;
             z-index: 20;
-    
         }
 
         button {
@@ -93,7 +93,6 @@
             height: 40px;
             font-size: 14px;
             cursor: pointer;
-
         }
 
         /* Sidebar */
@@ -126,16 +125,14 @@
 
     <!-- Image Scrolling Container -->
     <div class="image-container" id="imageContainer">
-        <img src="portfolioimages/VROOOOOOMGIF(1).gif" alt="Image 3">
-        <img src="portfolioimages/carrotgif4.gif" alt="Image 1">
-        <img src="portfolioimages/finalkytfront-min.png" alt="Image 6">
-        <img src="portfolioimages/idrove1-min.gif" alt="Image 2">
-        <img src="portfolioimages/PP-min.gif" alt="Image 7">
-        <img src="portfolioimages/eposter25doc-min.png" alt="Image 8">
-        <img src="portfolioimages/whiteworkshop-min.gif" alt="Image 4">
-        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 9">
-  
-
+        <img src="portfolioimages/VROOOOOOMGIF.gif" alt="Image 1" class="special">
+        <img src="https://imgur.com/Sp7hGnz" alt="Image 2">
+        <img src="portfolioimages/finalkytfront-min.png" alt="Image 3">
+        <img src="portfolioimages/idrove1-min.gif" alt="Image 4">
+        <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special">
+        <img src="portfolioimages/eposter25doc-min.png" alt="Image 6">
+        <img src="portfolioimages/whiteworkshop-min.gif" alt="Image 7" class="special">
+        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 8">
     </div>
 
     <!-- About Me Sidebar -->

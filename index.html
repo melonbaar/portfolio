@@ -16,18 +16,18 @@
         }
 
         /* Header */
-        header {
+        header { 
             background-color: transparent;
             padding: 10px;
             width: 100%;
             position: fixed;
-            top: 0;
+            top: 10;
             z-index: 10;
         }
 
         h1 {
             color: whitesmoke;
-            margin: 0;
+            margin: 10px;
         }
 
         /* Scrolling Image Container */
@@ -40,7 +40,6 @@
             height: 100vh;
             position: relative;
             white-space: nowrap;
-            scrollbar-width: none;
             background-color: black;
         }
 
@@ -53,46 +52,84 @@
             height: 100vh;
             object-fit: cover;
             display: block;
-            margin: 0;
-            padding: 0;
         }
 
-        /* Special Images (1, 5, and 7) */
+        /* Special Images (5 and 7) */
         .image-container img.special {
             width: 80vw;
             height: 50vw;
             object-fit: contain;
             display: block;
-            margin: auto 10vw; /* Adds left and right margins */
+            margin: auto 10vw;
             padding: 30px;
-            min-height: 300px; /* Prevents collapse */
+            min-height: 300px;
+        }
+
+        /* Video Styling */
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none; /* Disable interactions */
+            position: relative;
+        }
+
+        video {
+            width: 70vw;
+            height: 50vw;
+            object-fit: contain;
+            display: block;
+            margin: auto 10vw;
+        }
+
+        /* Tooltip that Follows Cursor */
+        .tooltip {
+            position: absolute;
+            background-color: red;
+            color: white;
+            width: 350px;
+            padding: 8px 8px;
+            border-radius: 0px;
+            font-size: 14px;
+            visibility: hidden;
+            transition: opacity 0.2s ease-in-out;
+            pointer-events: none;
+            z-index: 80;
         }
 
         /* Scroll Progress Bar */
-        .progress-bar {
+        /* .progress-bar {
             position: fixed;
             top: 0px;
             left: 0;
             width: 0%;
             height: 5px;
-            background: whitesmoke;
+            background: red;
             z-index: 2;
-            transition: width 0.1s ease-out;
-        }
+            transition: width 0.1s ease-out, background-color 0.3s ease, transform 0.1s ease-out;
+        } */
+
 
         /* About Me Button */
         .aboutme {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 20;
+            bottom: 40px;
+            left: 40px;
+            z-index: 90;
         }
 
         button {
             width: 80px;
-            height: 40px;
+            height: 80px;
             font-size: 14px;
             cursor: pointer;
+            color: whitesmoke;
+            background-color: transparent;
+            border: 1.5px solid whitesmoke;
+            border-radius: 100px;
+            transition: all 0.3s ease;
         }
 
         /* Sidebar */
@@ -108,60 +145,130 @@
             overflow-y: auto;
             transform: translateX(-100%);
             transition: transform 0.3s ease-in-out;
+            text-align: left;
+            z-index: 30;
         }
 
         .sidebar.open {
             transform: translateX(0);
         }
+
+        .sidebar h2,
+        .sidebar p {
+            text-align: left;
+        }
+
+        /* .boxbook {
+            background-color: red;
+            color:whitesmoke;
+            width: 500px;
+            height: 20px;
+            margin: 5px;
+        } */
+
     </style>
 </head>
 
 <body>
     <header>
-        <h1>kyliewwwoods</h1>
+        <h1 id="scrollTitle">kyliewoods</h1>
     </header>
 
-    <div class="progress-bar" id="progressBar"></div>
+    <!-- <div class="progress-bar" id="progressBar"></div> -->
+
+    <!-- Tooltip Box -->
+    <div class="tooltip" id="tooltip"></div>
 
     <!-- Image Scrolling Container -->
     <div class="image-container" id="imageContainer">
-        <img src="portfolioimages/VROOOOOOMGIF.gif" alt="Image 1" class="special">
-        <img src="https://imgur.com/Sp7hGnz" alt="Image 2">
-        <img src="portfolioimages/finalkytfront-min.png" alt="Image 3">
-        <img src="portfolioimages/idrove1-min.gif" alt="Image 4">
-        <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special">
-        <img src="portfolioimages/eposter25doc-min.png" alt="Image 6">
-        <img src="portfolioimages/whiteworkshop-min.gif" alt="Image 7" class="special">
-        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 8">
+        <img src="portfolioimages/idrove1-min.gif" alt="Image 4" onmouseover="showTooltip(event, 'i drove two and a half hours back to my hometown to eat one specific soup from one specific restaurant (2023)\n\n516 perfect-bound book representing personal experiences of growing up Korean-American in Centreville, a community in northern Virginia home to one largest Korean communities in the United State- as well as experiences of leaving, coming back, and finding solace  and cultural reconnection in Korean cuisine. ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/finalkytfront-min.png" alt="Image 3" onmouseover="showTooltip(event, 'Kim Tae Yun Zine (2022)\n\nfoldable zine featuring quotes from grandmaster Kim Tae Yun ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3R5ZHM0a2I4NnJ5YXNzMmsxZnNjYzJxZTIwNGlncThoemhya3pwYyZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/knBnOj81YLIh0N2wkD/giphy.gif" alt="Image 2" onmouseover="showTooltip(event, 'Carrot Cake (2024)')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <div class="video-container">
+            <video autoplay loop muted playsinline poster="placeholder.jpg">
+                <source src="portfolioimages/vroomgif.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 8" onmouseover="showTooltip(event, 'VCU School of Pharamacy 125th Anniversary Postcards (2023)\n\n decades')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special" onmouseover="showTooltip(event, 'p3dlprty (2022)\n\pedal')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/eposter25doc-min.png" alt="Image 6" onmouseover="showTooltip(event, 'e poster(2022) \n\n poster excerise.')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/whiteworkshop-min.gif" alt="Image 7" class="special" onmouseover="showTooltip('moving posters(2025) \n\n moving poster for workshop)" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
     </div>
 
-    <!-- About Me Sidebar -->
     <div class="sidebar" id="sidebar">
-        <h2>About Me</h2>
+        <h2>who am i</h2>
         <p>hi, my name is kylie and this is a work in progress.</p>
     </div>
 
-    <!-- About Me Button -->
     <div class="aboutme">
         <button onclick="toggleSidebar()">about me</button>
     </div>
 
+
     <script>
-        function toggleSidebar() {
-            let sidebar = document.getElementById("sidebar");
-            sidebar.classList.toggle("open");
+    //     function toggleSidebar() {
+    //         let sidebar = document.getElementById("sidebar");
+    //         sidebar.classList.toggle("open");
+    //     }
+
+    //    imageContainer.addEventListener("scroll", function () {
+    //        let scrollLeft = imageContainer.scrollLeft;
+    //        let scrollWidth = imageContainer.scrollWidth - imageContainer.clientWidth;
+    //        let scrollPercentage = (scrollLeft / scrollWidth) * 100;
+       
+    //        progressBar.style.width = scrollPercentage + "%";
+       
+    //        if (scrollPercentage < 30) {
+    //            progressBar.style.backgroundColor = "red";
+    //        } else if (scrollPercentage < 60) {
+    //            progressBar.style.backgroundColor = "orange";
+    //        } else {
+    //            progressBar.style.backgroundColor = "hotpink";
+    //        }
+        
+       
+    //    });
+    const imageContainer = document.getElementById("imageContainer");
+    const scrollTitle = document.getElementById("scrollTitle");
+    const progressBar = document.getElementById("progressBar");
+
+    imageContainer.addEventListener("scroll", function () {
+      const scrollLeft = imageContainer.scrollLeft;
+      const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
+      const progress = scrollLeft / maxScrollLeft;
+
+      // Max 7 'w's added
+      const wCount = Math.floor(progress * 7);
+      scrollTitle.textContent = "kylie" + "w".repeat(wCount) + "woods";
+
+      // Optional: update progress bar
+      progressBar.style.width = (progress * 100) + "%";
+    });
+
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("open");
+    }
+      
+
+        function showTooltip(event, text) {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.innerText = text;
+            tooltip.style.visibility = "visible";
+            tooltip.style.opacity = "1";
         }
 
-        // Scroll Progress Bar
-        let imageContainer = document.getElementById("imageContainer");
-        let progressBar = document.getElementById("progressBar");
+        function moveTooltip(event) {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.style.left = event.pageX + 15 + "px";
+            tooltip.style.top = event.pageY + 15 + "px";
+        }
 
-        imageContainer.addEventListener("scroll", function () {
-            let scrollLeft = imageContainer.scrollLeft;
-            let scrollWidth = imageContainer.scrollWidth - imageContainer.clientWidth;
-            let scrollPercentage = (scrollLeft / scrollWidth) * 100;
-            progressBar.style.width = scrollPercentage + "%";
-        });
+        function hideTooltip() {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.style.visibility = "hidden";
+            tooltip.style.opacity = "0";
+        }
     </script>
 </body>
 

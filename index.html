@@ -6,7 +6,7 @@
     <link rel="icon" href="redsq.png" type="image/png">
     <style>
         body {
-            font-family: sans-serif;
+            font-family:  Helvetica, sans-serif;
             background-color: black;
             color: red;
             height: 100vh;
@@ -132,7 +132,7 @@
             color: whitesmoke;
             right: 40px;
             z-index: 90;
-            animation: subtleFlash 1.4s infinite;
+            animation: subtleFlash 1s infinite;
         }
 
         .arrow.hidden {
@@ -176,14 +176,15 @@
         }
 
         .sidebar h2{ 
-
+            font-size: 10px;
         }
            
 
         .sidebar p {
-            font-size: 15px;
+            font-size: 24px;
             line-height: 1.2;
             text-align: left;
+               font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
         }
 
@@ -214,14 +215,15 @@
     <div class="image-container" id="imageContainer">
 
         <img src="https://d2w9rnfcy7mm78.cloudfront.net/36846648/original_e1fee77de8889e30ba59e3c57b80c04f.gif?1747763432"
-        style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'MOVING POSTERS, 8.5 x 11 (2025)\n\n animated front & static back poster design for my two-day senior workshop, where students were tasked with creating posters that combine type with moving image')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        style="width: 80vw; margin: 0 2vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'MOVING POSTERS, 8.5 x 11 (2025)\n\n animated front & static back poster design for my two-day senior workshop, where students were tasked with creating posters that combine type with moving image')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
     
 
         <img src="portfolioimages/idrove1-min.gif" alt="Image 4" onmouseover="showTooltip(event, 'i drove two and a half hours back to my hometown to eat one specific soup from one specific restaurant (2023)\n\n516 perfect-bound book representing personal experiences of growing up Korean-American in Centreville, a community in northern Virginia home to one largest Korean communities in the United States— the experience of leaving and returning home, and finding solace and cultural reconnection in Korean cuisine. ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
         <a href="https://instagram.com/overbooooked" target="_blank">
-          <img src="portfolioimages/socialmediablack.png"   alt="Image 8" onmouseover="showTooltip(event, ' Overbooked (2025) \n\n exhibition identity and social media design, with Amelia Magee')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+          <img src="portfolioimages/socialmediablack.png"  
+           alt="Image 8" onmouseover="showTooltip(event, ' Overbooked (2025) \n\n exhibition identity and social media design, with Amelia Magee')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()"> 
           </a>
           
           <img src="https://d2w9rnfcy7mm78.cloudfront.net/36850129/original_1b7d7c69ba85927b1c00014a709890a6.gif?1747771907"
@@ -294,9 +296,8 @@
     </div>
 
     <div class="sidebar" id="sidebar">
-        <h2>?</h2>
-        <p>Kylie Woods (they/she) is a graphic designer and interdisciplinary creative based in Richmond, VA. They recently received their BFA in Graphic Design from Virginia Commonwealth University School of the Arts (VCUarts).  </p>
-<br><br>
+        <h2>Who Am I</h2>
+        <p>Kylie Woods (they/she) is a graphic designer and interdisciplinary creative based in Richmond, VA. They recently received their BFA in graphic design from Virginia Commonwealth University School of the Arts (VCUarts).</p>
 <br>
 
 
@@ -309,9 +310,9 @@
         <button onclick="toggleSidebar()">about me</button>
     </div>
 
-    <div class="arrow">
-      <p>-----------------------------------> 
-    </div>
+    <!-- <div class="arrow">
+      <p>---->
+    </div> 
 
 
     <script>
@@ -341,65 +342,44 @@
     
     const imageContainer = document.getElementById("imageContainer");
     const scrollTitle = document.getElementById("scrollTitle");
-    const arrow = document.querySelector(".arrow");
-    const images = document.querySelectorAll(".image-container img");
+    const progressBar = document.getElementById("progressBar");
 
-    // w animation on scroll
     imageContainer.addEventListener("scroll", function () {
-        const scrollLeft = imageContainer.scrollLeft;
-        const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
-        const progress = scrollLeft / maxScrollLeft;
+      const scrollLeft = imageContainer.scrollLeft;
+      const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
+      const progress = scrollLeft / maxScrollLeft;
 
-        const wCount = Math.floor(progress * 9);
-        scrollTitle.textContent = "kylie" + "w".repeat(wCount) + "woods";
+      // Max 7 'w's added
+      const wCount = Math.floor(progress * 9);
+      scrollTitle.textContent = "kylie" + "w".repeat(wCount) + "woods";
+
+      // Optional: update progress bar
+      progressBar.style.width = (progress * 100) + "%";
     });
 
-    // observer to hide arrow once second image is visible
-    if (images.length > 1) {
-        const secondImage = images[1];
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        arrow.classList.add("hidden");
-                    } else {
-                        arrow.classList.remove("hidden");
-                    }
-                });
-            },
-            {
-                root: imageContainer,
-                threshold: 0.5,
-            }
-        );
-
-        observer.observe(secondImage);
-    }
-
     function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("sidebar").classList.toggle("open");
     }
+      
 
-    function showTooltip(event, text) {
-        const tooltip = document.getElementById("tooltip");
-        tooltip.innerText = text;
-        tooltip.style.visibility = "visible";
-        tooltip.style.opacity = "1";
-    }
+        function showTooltip(event, text) {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.innerText = text;
+            tooltip.style.visibility = "visible";
+            tooltip.style.opacity = "1";
+        }
 
-    function moveTooltip(event) {
-        const tooltip = document.getElementById("tooltip");
-        tooltip.style.left = event.pageX + 15 + "px";
-        tooltip.style.top = event.pageY + 15 + "px";
-    }
+        function moveTooltip(event) {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.style.left = event.pageX + 15 + "px";
+            tooltip.style.top = event.pageY + 15 + "px";
+        }
 
-    function hideTooltip() {
-        const tooltip = document.getElementById("tooltip");
-        tooltip.style.visibility = "hidden";
-        tooltip.style.opacity = "0";
-    }
-</script>
+        function hideTooltip() {
+            let tooltip = document.getElementById("tooltip");
+            tooltip.style.visibility = "hidden";
+            tooltip.style.opacity = "0";
+        }
 
         
     </script>

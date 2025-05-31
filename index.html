@@ -6,7 +6,7 @@
     <link rel="icon" href="redsq.png" type="image/png">
     <style>
         body {
-            font-family: Helvetica, sans-serif;
+            font-family: sans-serif;
             background-color: black;
             color: red;
             height: 100vh;
@@ -28,6 +28,7 @@
 
         h1 {
             color: whitesmoke;
+            /* font-weight: normal; */
             margin: 10px;
         }
 
@@ -119,6 +120,27 @@
             z-index: 90;
         }
 
+        @keyframes subtleFlash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+
+        }
+
+        .arrow {
+            position: fixed;
+            bottom: 40px;
+            color: whitesmoke;
+            right: 40px;
+            z-index: 90;
+            animation: subtleFlash 1.4s infinite;
+        }
+
+        .arrow.hidden {
+    opacity: 0;
+    pointer-events: none;
+    }
+
+
         button {
             width: 80px;
             height: 80px;
@@ -140,6 +162,7 @@
             height: 100%;
             background-color: red;
             color: whitesmoke;
+
             padding: 20px;
             overflow-y: auto;
             transform: translateX(-100%);
@@ -152,9 +175,16 @@
             transform: translateX(0);
         }
 
-        .sidebar h2,
+        .sidebar h2{ 
+
+        }
+           
+
         .sidebar p {
+            font-size: 15px;
+            line-height: 1.2;
             text-align: left;
+    
         }
 
         /* .boxbook {
@@ -170,7 +200,8 @@
 
 <body>
     <header>
-        <h1 id="scrollTitle">kyliewoods</h1>
+        <h1 id="scrollTitle">kyliewoods </h1>
+
     </header>
 
     <!-- <div class="progress-bar" id="progressBar"></div> -->
@@ -183,7 +214,7 @@
     <div class="image-container" id="imageContainer">
 
         <img src="https://d2w9rnfcy7mm78.cloudfront.net/36846648/original_e1fee77de8889e30ba59e3c57b80c04f.gif?1747763432"
-        style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'MOVING POSTERS, 8.5 x 11 (2025)\n\n front and back of a poster for my senior workshop on making simple moving images')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'MOVING POSTERS, 8.5 x 11 (2025)\n\n animated front & static back poster design for my two-day senior workshop, where students were tasked with creating posters that combine type with moving image')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
     
 
@@ -194,7 +225,7 @@
           </a>
           
           <img src="https://d2w9rnfcy7mm78.cloudfront.net/36850129/original_1b7d7c69ba85927b1c00014a709890a6.gif?1747771907"
-          style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Overbooked (2025)\n\n kinetic promotional posters for Overbooked exhibition')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+          style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Overbooked (2025)\n\n kinetic promotional posters for Overbooked, the VCUarts Graphic Design senior show')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
         <img src="portfolioimages/thickskindoc.png" alt="Image 3" onmouseover="showTooltip(event, 'Thick Skin (2025—) 4.5 x 6 inkjet on vellum \n\nongoing research, abridged writings, and personal essays ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
@@ -250,10 +281,10 @@
             </video>
         </div>
         
-        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 8" onmouseover="showTooltip(event, 'VCU School of Pharamacy 125th Anniversary Postcards (2023)\n\n Decade-corresponding postcards for VCU School of Pharmacy')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/125schoolofpharmacy-min.png" alt="Image 8" onmouseover="showTooltip(event, 'VCU School of Pharamacy 125th Anniversary Postcards (2023)\n\n decade-corresponding postcards for VCU School of Pharmacy')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
     <a href=https://p3dlprty.netlify.app>
-        <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special" onmouseover="showTooltip(event, 'p3dlprty (2022)\n\ninteractive website where visitors can click buttons to stack various manipulated layers of sound')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special" onmouseover="showTooltip(event, 'p3dlprty (2022)\n\ninteractive website inspired by guitar pedals. where visitors can click buttons to stack various manipulated layers of sound')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
     </a>
 
 
@@ -264,7 +295,7 @@
 
     <div class="sidebar" id="sidebar">
         <h2>?</h2>
-        <p>Kylie Woods (they/she) is a graphic designer and interdisciplinary creative based in Richmond, VA. They recently received their BFA from Virginia Commonwealth University School of the Arts (VCUarts).  </p>
+        <p>Kylie Woods (they/she) is a graphic designer and interdisciplinary creative based in Richmond, VA. They recently received their BFA in Graphic Design from Virginia Commonwealth University School of the Arts (VCUarts).  </p>
 <br><br>
 <br>
 
@@ -276,6 +307,10 @@
 
     <div class="aboutme">
         <button onclick="toggleSidebar()">about me</button>
+    </div>
+
+    <div class="arrow">
+      <p>-----------------------------------> 
     </div>
 
 
@@ -302,46 +337,71 @@
         
        
     //    });
+
+    
     const imageContainer = document.getElementById("imageContainer");
     const scrollTitle = document.getElementById("scrollTitle");
-    const progressBar = document.getElementById("progressBar");
+    const arrow = document.querySelector(".arrow");
+    const images = document.querySelectorAll(".image-container img");
 
+    // w animation on scroll
     imageContainer.addEventListener("scroll", function () {
-      const scrollLeft = imageContainer.scrollLeft;
-      const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
-      const progress = scrollLeft / maxScrollLeft;
+        const scrollLeft = imageContainer.scrollLeft;
+        const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
+        const progress = scrollLeft / maxScrollLeft;
 
-      // Max 7 'w's added
-      const wCount = Math.floor(progress * 9);
-      scrollTitle.textContent = "kylie" + "w".repeat(wCount) + "woods";
-
-      // Optional: update progress bar
-      progressBar.style.width = (progress * 100) + "%";
+        const wCount = Math.floor(progress * 9);
+        scrollTitle.textContent = "kylie" + "w".repeat(wCount) + "woods";
     });
 
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("open");
+    // observer to hide arrow once second image is visible
+    if (images.length > 1) {
+        const secondImage = images[1];
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        arrow.classList.add("hidden");
+                    } else {
+                        arrow.classList.remove("hidden");
+                    }
+                });
+            },
+            {
+                root: imageContainer,
+                threshold: 0.5,
+            }
+        );
+
+        observer.observe(secondImage);
     }
-      
 
-        function showTooltip(event, text) {
-            let tooltip = document.getElementById("tooltip");
-            tooltip.innerText = text;
-            tooltip.style.visibility = "visible";
-            tooltip.style.opacity = "1";
-        }
+    function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("open");
+    }
 
-        function moveTooltip(event) {
-            let tooltip = document.getElementById("tooltip");
-            tooltip.style.left = event.pageX + 15 + "px";
-            tooltip.style.top = event.pageY + 15 + "px";
-        }
+    function showTooltip(event, text) {
+        const tooltip = document.getElementById("tooltip");
+        tooltip.innerText = text;
+        tooltip.style.visibility = "visible";
+        tooltip.style.opacity = "1";
+    }
 
-        function hideTooltip() {
-            let tooltip = document.getElementById("tooltip");
-            tooltip.style.visibility = "hidden";
-            tooltip.style.opacity = "0";
-        }
+    function moveTooltip(event) {
+        const tooltip = document.getElementById("tooltip");
+        tooltip.style.left = event.pageX + 15 + "px";
+        tooltip.style.top = event.pageY + 15 + "px";
+    }
+
+    function hideTooltip() {
+        const tooltip = document.getElementById("tooltip");
+        tooltip.style.visibility = "hidden";
+        tooltip.style.opacity = "0";
+    }
+</script>
+
+        
     </script>
 </body>
 

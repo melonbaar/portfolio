@@ -14,6 +14,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            
         }
 
         /* Header */
@@ -29,11 +30,13 @@
         h1 {
             color: rgb(240, 241, 243);
             margin: 30px;
-            font-size: 24px;
+            font-size: 30px;
             font-weight:400;
             margin-left: auto;
             margin-left: 1vw; 
             width: fit-content;
+
+            /* filter: url(#distress); */
 
         }
 
@@ -123,6 +126,9 @@
             bottom: 40px;
             left: 40px;
             z-index: 90;
+
+    
+
         }
 
         @keyframes subtleFlash {
@@ -140,9 +146,11 @@
             cursor: pointer;
             color: rgb(240, 241, 243);
             background-color: transparent;
-            border: 1.0px solid rgb(240, 241, 243);
+            border: 1.4px solid rgb(240, 241, 243);
             border-radius: 100px;
             transition: all 0.3s ease;
+
+            filter: url(#distress-2);
         }
 
         /* Sidebar */
@@ -154,6 +162,8 @@
             height: 100%;
             background-color: red;
             color: rgb(240, 241, 243);
+
+            filter: url(#distress);
 
             padding: 20px;
             overflow-y: auto;
@@ -191,12 +201,63 @@
 </head>
 
 <body>
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <filter id="distress">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.6"
+              numOctaves="3"
+              seed="2"
+              result="noise" />
+      
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="1"
+              xChannelSelector="R"
+              yChannelSelector="G" />
+          </filter>
+
+        <filter id="distress-2">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.6"
+            numOctaves="1"
+            seed="2"
+            result="noise" />
+    
+          <feDisplacementMap
+            in="SourceGraphic"
+            in2="noise"
+            scale="1.4"
+            xChannelSelector="R"
+            yChannelSelector="G" />
+        </filter>
+
+        <filter id="distress-3">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="1"
+              numOctaves="3"
+              seed="2"
+              result="noise" />
+      
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="1.2"
+              xChannelSelector="R"
+              yChannelSelector="G" />
+          </filter>
+
+      </defs>
+    </svg>
+      
     <header>
         <h1 id="scrollTitle">kyliewoods </h1>
 
     </header>
-
-    <!-- <div class="progress-bar" id="progressBar"></div> -->
 
     <!-- Tooltip Box -->
     <div class="tooltip" id="tooltip"></div>
@@ -218,13 +279,18 @@
 
 
         <img src="https://d2w9rnfcy7mm78.cloudfront.net/47400595/original_753b32657a7943e978bc942ec8a7795c.gif?1782756288?bc=0"
-        style="width: 50vw; margin: 0 2vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Plush Moon Terrarium Co Rebranding (2026)\n\nBrand identity for Knoxville-based terrarium shop, Plush Moon Terrarium Co. portrait photographed by Steeze Studios')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        style="width: 50vw; margin: 0 12vw; display: block; object-fit: contain;" alt="PMGifBrand"onmouseover="showTooltip(event, 'Plush Moon Terrarium Co Rebranding (2026)\n\nBrand identity for Knoxville-based terrarium shop, Plush Moon Terrarium Co. portrait photographed by Steeze Studios')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
         <img src="https://d2w9rnfcy7mm78.cloudfront.net/45014789/original_08a3c82aa55c507251f7966b3ab9aea8.gif?1775308171"
-        style="width: 40vw; margin: 0 30vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Plush Moon Terrarium Co Rebranding (2026)\n\nBrand identity for Knoxville-based terrarium shop, Plush Moon Terrarium Co.')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
-          
-        <img src="https://d2w9rnfcy7mm78.cloudfront.net/47446576/original_712a43b8ba8d792d960f8779d2385405.png?1782840033?bc=0" alt="Image 4" onmouseover="showTooltip(event, 'Overbooked (2025)\n\n promotional poster for the 2025 VCUarts graphic design senior show ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        style="width: 40vw; display: block; object-fit: contain;" alt="PMLogoGif"onmouseover="showTooltip(event, 'Plush Moon Terrarium Co Rebranding (2026)\n\nBrand identity for Knoxville-based terrarium shop, Plush Moon Terrarium Co.')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
+        <img src="https://d2w9rnfcy7mm78.cloudfront.net/47446030/original_dd65eaaa3a5ae507709368d1a58bc4e4.png?1782839644?bc=0"       style="width: 50vw; margin: 0 20vw; display: block; object-fit: contain;" 
+          alt="Image110"onmouseover="showTooltip(event, 'Torchbearers - Carrying Change Awards, Logo Design (2026)\n\n this is a monochrome variation of a logo I did for the Torchbearers Awards, an initiative created to illuminate and recognize annually, 50 queer women and non-binary change-makers for the work they do in their communities and professional worlds. the logo features the typeface MARSHA by VocalType, named in honor of transgender activist Marsha P. Johnson and modeled after the vintage signage of the historic Stonewall Inn.  ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+          
+        <img src="https://d2w9rnfcy7mm78.cloudfront.net/47446576/original_712a43b8ba8d792d960f8779d2385405.png?1782840033?bc=0"       
+        style="width: 80vw; margin-left: 0 2vw; display: block; object-fit: contain;" alt="Image 4" onmouseover="showTooltip(event, 'Overbooked (2025)\n\n promotional poster for the 2025 VCUarts graphic design senior show ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+
+        
         <a href="https://instagram.com/overbooooked" target="_blank">
             <img src="portfolioimages/socialmediablack.png"  
              alt="Image 8" onmouseover="showTooltip(event, ' Overbooked (2025) \n\n exhibition identity and social media design, in collaboration with Amelia Magee')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()"> 
@@ -232,10 +298,9 @@
   
 
           <img src="https://d2w9rnfcy7mm78.cloudfront.net/36850129/original_1b7d7c69ba85927b1c00014a709890a6.gif?1747771907"
-          style="width: 80vw; margin: 0 10vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Overbooked (2025)\n\ntwo animated posters made for instagram, promoting the 2025 VCUarts graphic design senior show')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+          style="width: 60vw; margin: 0 1vw; display: block; object-fit: contain;" alt="Image110"onmouseover="showTooltip(event, 'Overbooked (2025)\n\ntwo animated posters made for instagram, promoting the 2025 VCUarts graphic design senior show')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
 
-          <img src="https://d2w9rnfcy7mm78.cloudfront.net/47446030/original_dd65eaaa3a5ae507709368d1a58bc4e4.png?1782839644?bc=0"
-          alt="Image110"onmouseover="showTooltip(event, 'Torchbearers - Carrying Change Awards, Logo Design (2026)\n\n this is a monochrome variation of a logo I did for the Torchbearers Awards, an initiative created to illuminate and recognize annually, 50 queer women and non-binary change-makers for the work they do in their communities and professional worlds. the logo features the typeface MARSHA by VocalType, named in honor of transgender activist Marsha P. Johnson and modeled after the vintage signage of the historic Stonewall Inn.  ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+        
 
 
 
@@ -255,9 +320,13 @@
         <img src="portfolioimages/PP-min.gif" alt="Image 5" class="special" onmouseover="showTooltip(event, 'p3dlprty (2022)\n\na guitar pedal-inspired site where visitors can create textured soundscapes by layering altered sounds')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
     </a>
 
-    <img src="portfolioimages/finalkytfront-min.png" alt="Image 3" 
     
+
+    <img src="portfolioimages/finalkytfront-min.png" alt="Image 3" 
+    style="width: 110vw; margin-right: 0 60vw; display: block; object-fit: contain;" 
     onmouseover="showTooltip(event, 'Kim Tae Yun Zine, 11 x 8.5 (2022)\n\neight-page foldable zine and poster featuring quotes and images from the life of Korean martial arts grandmaster, Kim Tae Yun ')" onmousemove="moveTooltip(event)" onmouseout="hideTooltip()">
+
+    
 
     </div>
 
@@ -268,7 +337,7 @@
 <br>
 
 
-        <p>kywoods03@gmail.com <br><a href="kyliewoodsresume20251.pdf" target="_blank" style="color:rgb(240, 241, 243)" rel="noopener noreferrer">CV</a></p>
+        <p>kywoods03@gmail.com <br><a href="kyliewoodsresume2026.pdf" target="_blank" style="color:rgb(240, 241, 243)" rel="noopener noreferrer">CV</a></p>
 
 
     </div>
@@ -354,13 +423,13 @@ requestAnimationFrame(autoScroll);
             let tooltip = document.getElementById("tooltip");
             tooltip.innerText = text;
             tooltip.style.visibility = "visible";
-            tooltip.style.opacity = "1";
+            tooltip.style.opacity = "0.9";
         }
 
         function moveTooltip(event) {
             let tooltip = document.getElementById("tooltip");
-            tooltip.style.left = event.pageX + 15 + "px";
-            tooltip.style.top = event.pageY + 15 + "px";
+            tooltip.style.left = event.pageX + 10 + "px";
+            tooltip.style.top = event.pageY + 10 + "px";
         }
 
         function hideTooltip() {
